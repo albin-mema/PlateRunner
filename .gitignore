@@ -1,0 +1,115 @@
+# Flutter & Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+coverage.lcov
+
+# Generated intermediate artifacts
+flutter_*.png
+*.dart.js
+*.info.json
+*.js.deps
+*.js.map
+*.dill
+*.dill.*
+*.tmp
+*.snapshot
+*.benchmark.json
+
+# Logs & symbols
+*.log
+*.symbols
+
+# Dependency & lock files (keep pubspec.lock for apps)
+# pubspec.lock is intentionally tracked for applications; do not ignore it.
+
+# IDE & Editor settings
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Android
+android/.gradle/
+android/captures/
+android/local.properties
+android/key.properties
+android/app/debug
+android/app/profile
+android/app/release
+*.keystore
+*.jks
+**/google-services.json
+
+# iOS & macOS
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcodeproj/project.xcworkspace/
+ios/Runner.xcworkspace/
+macos/Flutter/ephemeral/
+macos/.symlinks/
+macos/Pods/
+macos/Runner.xcworkspace/
+
+# Linux & Windows (desktop)
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+
+# Web
+web/.dart_tool/
+
+# Generated plugin registrant (sometimes created for web/desktop)
+lib/generated_plugin_registrant.dart
+
+# Build / dist outputs
+app.*.symbols
+
+# Crashlytics
+crashlytics-build.properties
+
+# Temporary & tooling
+tmp/
+temp/
+.DS_Store
+Thumbs.db
+
+# Coverage tooling artifacts
+lcov.info
+
+# Fastlane & tooling outputs
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# VS Code specific (retain workspace recommendations if added)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Local environment variables
+.env
+.env.*
+
+# Security / secret files (ensure not committed)
+**/secrets.*
+
+# SQLite / local db files
+*.sqlite
+*.db
+
+# Flutter tool state
+.dart_server/

@@ -1,0 +1,45 @@
+# Analysis options for the PlateRunner Flutter project.
+# Extends the recommended Flutter lints and adds a few stricter checks.
+# See: https://pub.dev/packages/flutter_lints
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    # These are enabled by default in Dart 3, but re-stated here for clarity and portability.
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  exclude:
+    - build/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+  errors:
+    # Elevate or adjust severities (info | warning | error | ignore)
+    dead_code: warning
+    unused_import: warning
+    invalid_use_of_internal_member: error
+
+linter:
+  rules:
+    # Additional rules beyond flutter_lints defaults
+    - always_declare_return_types
+    - avoid_print
+    - prefer_final_locals
+    - prefer_final_in_for_each
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - sort_child_properties_last
+    - use_super_parameters
+    - flutter_style_todos
+    - unnecessary_lambdas
+    - avoid_redundant_argument_values
+    - avoid_unnecessary_containers
+    - cancel_subscriptions
+    - parameter_assignments
+
+# You can run:
+#   flutter analyze
+# to apply these rules.
