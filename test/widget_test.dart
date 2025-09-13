@@ -1,30 +1,51 @@
-// This is a basic Flutter widget test.
+// Basic widget tests for the PlateRunner application.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// The original counter-oriented tests were removed after migrating to the
+// LiveScan prototype. These placeholder tests ensure the application
+// builds and the primary screen renders expected scaffold elements.
+//
+// Future additions:
+//  - Golden tests for overlay rendering
+//  - Pumping synthetic pipeline events to validate recent plates list
+//  - Permission flow UI states
+//
+// References:
+//  - lib/main.dart
+//  - lib/app/pipeline/recognition_pipeline.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:plate_runner/main.dart';
+import 'package:plate_runner/shared/config/runtime_config.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const PlateRunnerApp());
+  group('PlateRunnerApp smoke tests', () {
+    testWidgets('app builds and shows Live Scan title', (tester) async {
+      final config = InMemoryRuntimeConfigService.withDefaults();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      await tester.pumpWidget(PlateRunnerApp(configService: config));
+      await tester.pumpAndSettle();
 
-    // Tap the increment button (using a specific key) to avoid ambiguity with multiple '+' icons.
-    await tester.tap(find.byKey(const Key('increment_button')));
-    await tester.pump();
+      // Verify the AppBar title of the LiveScanPage.
+      expect(find.text('Live Scan (Prototype)'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      // Basic sanity: recent plates section header present.
+      expect(find.text('Recent Plates'), findsOneWidget);
+    });
+
+    testWidgets('tapping Start toggles to Stop (pipeline start)', (tester) async {
+      final config = InMemoryRuntimeConfigService.withDefaults();
+      await tester.pumpWidget(PlateRunnerApp(configService: config));
+      await tester.pumpAndSettle();
+
+      // Ensure initial button label.
+      final startBtn = find.widgetWithText(FloatingActionButton, 'Start');
+      expect(startBtn, findsOneWidget);
+
+      await tester.tap(startBtn);
+      await tester.pump(); // allow setState
+      // After starting, label should flip to Stop.
+      expect(find.widgetWithText(FloatingActionButton, 'Stop'), findsOneWidget);
+    });
   });
 }

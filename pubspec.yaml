@@ -8,14 +8,37 @@ environment:
   sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
+  # Flutter SDK & core
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
 
+  # Camera & media acquisition (live scan + gallery/file import)
+  camera: ^0.11.2
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
+  # video_player temporarily removed (simulation-only video import)
+
+  # Permissions (camera, storage access)
+  permission_handler: ^12.0.1
+
+  # On-device ML (TFLite) temporarily removed for web build compatibility.
+  # Re-add for mobile builds when native inference is implemented:
+  # tflite_flutter: ^0.10.4
+  # tflite_flutter_helper: ^0.4.3
+
+  # Lightweight structured logging (optional)
+  logging: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  test: ^1.25.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
+  # Asset directories for prototype models & sample frames
+  assets:
+    - assets/models/
+    - assets/samples/
